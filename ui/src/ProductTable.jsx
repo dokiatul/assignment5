@@ -3,26 +3,24 @@ import { Link, withRouter } from 'react-router-dom';
 
 const ProductRow = withRouter(({
   product, deleteProduct, index,
-}) => {
-  return (
-    <tr>
-      <td>{product.name}</td>
-      <td>
-        $
-        {product.price}
-      </td>
-      <td>{product.category}</td>
-      <td><Link to={`/view/${product.id}`} target="_blank" rel="noopener noreferrer">Veiw</Link></td>
-      <td>
-        <Link to={`/edit/${product.id}`}>Edit</Link>
-        {' | '}
-        <button type="button" onClick={() => { deleteProduct(index); }}>
-          Delete
-        </button>
-      </td>
-    </tr>
-  );
-});
+}) => (
+  <tr>
+    <td>{product.name}</td>
+    <td>
+      $
+      {product.price}
+    </td>
+    <td>{product.category}</td>
+    <td><Link to={`/view/${product.id}`} target="_blank" rel="noopener noreferrer">Veiw</Link></td>
+    <td>
+      <Link to={`/edit/${product.id}`}>Edit</Link>
+      {' | '}
+      <button type="button" onClick={() => { deleteProduct(index); }}>
+        Delete
+      </button>
+    </td>
+  </tr>
+));
 
 export default function ProductTable({ products, deleteProduct }) {
   const productRows = products.map((product, index) => (
